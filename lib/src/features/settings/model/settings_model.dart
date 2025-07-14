@@ -12,9 +12,9 @@ import '../provider/time_format_provider.dart';
 import 'locale/locale_model.dart';
 import 'theme/theme_model.dart';
 
+part 'settings_model.crud.ext.dart';
+part 'settings_model.ext.dart';
 part 'settings_model.g.dart';
-part 'settings_model_crud_ext.dart';
-part 'settings_model_ext.dart';
 
 @HiveType(typeId: HiveTypes.appSettings)
 class AppSettings extends HiveObject {
