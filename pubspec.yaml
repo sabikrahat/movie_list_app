@@ -40,6 +40,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_ce_generator: ^1.9.2
+  mockito: ^5.4.6
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -63,6 +64,7 @@ flutter_launcher_icons:
     generate: true
     image_path: "assets/icons/app-icon-1024x1024.png"
   # command: dart run flutter_launcher_icons:main
+
 flutter_native_splash:
   android: true
   ios: true
@@ -86,6 +88,7 @@ flutter_native_splash:
     icon_background_color_dark: "#000000"
     branding: "assets/icons/native_splash/android_12_and_above/branding_android_12.png"
   # command: dart run flutter_native_splash:create
+
 flutter:
   uses-material-design: true
 

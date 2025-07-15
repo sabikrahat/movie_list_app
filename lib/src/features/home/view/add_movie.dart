@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
-import '../model/movie_model.dart';
 
 import '../../../core/config/constants.dart';
 import '../../../core/config/size.dart';
@@ -14,6 +13,7 @@ import '../../../injector.dart';
 import '../../app_components/page_padding.dart';
 import '../../app_components/singlechildscrollview.dart';
 import '../../settings/model/settings_model.dart';
+import '../model/movie_model.dart';
 import '../provider/add_movie_provider.dart';
 
 Future<void> showAddMovieBottomSheet(

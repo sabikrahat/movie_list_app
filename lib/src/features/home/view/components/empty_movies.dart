@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../core/config/constants.dart';
-import '../../../../core/utils/extensions/extensions.dart';
 
+import '../../../../core/config/constants.dart';
 import '../../../../core/config/size.dart';
+import '../../../../core/utils/extensions/extensions.dart';
 
 class EmptyMoviesView extends StatelessWidget {
   const EmptyMoviesView({super.key});

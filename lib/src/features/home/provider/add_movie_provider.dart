@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'home_provider.dart';
-import '../model/movie_model.dart';
+
 import '../../../core/shared/ksnackbar/ksnackbar.dart';
 import '../../../core/utils/extensions/extensions.dart';
 import '../../../core/utils/logger/logger_helper.dart';
+import '../model/movie_model.dart';
+import 'home_provider.dart';
 
 typedef AddMovieNotifier = AutoDisposeNotifierProviderFamily<AddMovieProvider, void, Movie?>;
 
