@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../core/config/constants.dart';
 import '../../../../core/config/size.dart';
-
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../injector.dart';
 import '../../../settings/model/settings_model.dart';
@@ -64,21 +64,21 @@ class MovieCard extends ConsumerWidget {
                       _ActionButton(
                         icon: movie.isFavorite ? Icons.favorite : Icons.favorite_border,
                         color: movie.isFavorite ? Colors.red : context.theme.iconTheme.color,
-                        onPressed: () => notifier.toggleFavorite(movie),
+                        onPressed: () async => await notifier.toggleFavorite(movie),
                         tooltip: movie.isFavorite ? 'Remove from favorites' : 'Add to favorites',
                       ),
                       const SizedBox(width: 4),
                       _ActionButton(
                         icon: Icons.edit_outlined,
                         color: context.theme.iconTheme.color,
-                        onPressed: () => _showEditMovie(context, notifier),
+                        onPressed: () async => await _showEditMovie(context, notifier),
                         tooltip: 'Edit movie',
                       ),
                       const SizedBox(width: 4),
                       _ActionButton(
                         icon: Icons.copy_outlined,
                         color: context.theme.iconTheme.color,
-                        onPressed: () => _duplicateMovie(context, notifier),
+                        onPressed: () async => await _duplicateMovie(context, notifier),
                         tooltip: 'Duplicate movie',
                       ),
                     ],

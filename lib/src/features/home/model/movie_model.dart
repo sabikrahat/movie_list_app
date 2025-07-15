@@ -10,10 +10,8 @@ part 'movie_model.g.dart';
 
 @HiveType(typeId: HiveTypes.movies)
 class Movie {
-  Movie();
-
   @HiveField(0)
-  final id = '${DateTime.now().microsecondsSinceEpoch + Random().nextInt(999999)}';
+  late String id;
   @HiveField(1)
   late String title;
   @HiveField(2)
@@ -25,6 +23,11 @@ class Movie {
   @HiveField(5)
   DateTime updated = DateTime.now();
 
+  Movie() {
+    // Generate ID only if not already set (for new instances)
+    id = '${DateTime.now().microsecondsSinceEpoch + Random().nextInt(999999)}';
+  }
+
   // copywith
   Movie copyWith({
     String? title,
@@ -33,20 +36,24 @@ class Movie {
     DateTime? created,
     DateTime? updated,
   }) {
-    return Movie()
-      ..title = title ?? this.title
-      ..description = description ?? this.description
-      ..isFavorite = isFavorite ?? this.isFavorite
-      ..created = created ?? this.created
-      ..updated = updated ?? this.updated;
+    final copy = Movie();
+    copy.id = id; // Preserve the original ID
+    copy.title = title ?? this.title;
+    copy.description = description ?? this.description;
+    copy.isFavorite = isFavorite ?? this.isFavorite;
+    copy.created = created ?? this.created;
+    copy.updated = updated ?? this.updated;
+    return copy;
   }
 
   // from json
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie()
+      ..id = json[_Json.id] as String
       ..title = json[_Json.title] as String
       ..description = json[_Json.description] as String
       ..isFavorite = json[_Json.isFavorite] as bool? ?? false
+      ..created = DateTime.parse(json[_Json.created] as String)
       ..updated = DateTime.parse(json[_Json.updated] as String);
   }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/config/constants.dart';
+import '../../../../core/config/size.dart';
 import '../../../../core/exception/exception.dart';
 import '../../../../core/utils/extensions/extensions.dart';
-
-import '../../../../core/config/size.dart';
 
 class ErrorView extends StatelessWidget {
   const ErrorView({super.key, required this.error, required this.onRetry});

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'add_movie.dart';
-import 'components/error_view.dart';
 
 import '../../../core/utils/extensions/extensions.dart';
 import '../../settings/view/setting_view.dart';
 import '../provider/home_provider.dart';
+import 'add_movie.dart';
 import 'components/empty_movies.dart';
+import 'components/error_view.dart';
 import 'components/movie_list.dart';
 import 'components/movie_shimmer.dart';
 
@@ -29,7 +29,7 @@ class HomeView extends ConsumerWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.small(
         onPressed: () async =>
             await showAddMovieBottomSheet(context).then((_) async => await notifier.refresh()),
         child: const Icon(Icons.add),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'home_provider.dart';
 import '../model/movie_model.dart';
 import '../../../core/shared/ksnackbar/ksnackbar.dart';
 import '../../../core/utils/extensions/extensions.dart';
@@ -17,9 +18,13 @@ class AddMovieProvider extends AutoDisposeFamilyNotifier<void, Movie?> {
   late DateTime created;
 
   bool isLoading = false;
+  bool _hasSetInitialValues = false;
 
   @override
   void build(Movie? arg) {
+    // Reset the flag when building with a new argument
+    _hasSetInitialValues = false;
+
     if (arg != null) {
       titleCntrlr.text = arg.title;
       descriptionCntrlr.text = arg.description;
@@ -30,8 +35,12 @@ class AddMovieProvider extends AutoDisposeFamilyNotifier<void, Movie?> {
   }
 
   void setTitleAndDescription(String? title, String? description) {
-    titleCntrlr.text = title ?? '';
-    descriptionCntrlr.text = description ?? '';
+    // Only set if we haven't set initial values yet to avoid overriding user input
+    if (!_hasSetInitialValues) {
+      if (title != null) titleCntrlr.text = title;
+      if (description != null) descriptionCntrlr.text = description;
+      _hasSetInitialValues = true;
+    }
   }
 
   void setCreatedDateTime(DateTime date) {
@@ -74,7 +83,9 @@ class AddMovieProvider extends AutoDisposeFamilyNotifier<void, Movie?> {
     try {
       if (arg == null) return;
       EasyLoading.show();
+      log.d('Deleting movie: ${arg!.id}');
       await arg!.deleteData();
+      await ref.read(homeProvider.notifier).refresh();
       EasyLoading.dismiss();
       if (!context.mounted) return;
       context.pop();

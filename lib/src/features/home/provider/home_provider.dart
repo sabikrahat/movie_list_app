@@ -1,10 +1,10 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../model/movie_model.dart';
 
 import '../../../core/db/hive.dart';
 import '../../../core/exception/exception.dart';
 import '../../../core/utils/logger/logger_helper.dart';
+import '../model/movie_model.dart';
 
 final homeProvider = AsyncNotifierProvider<HomeProvider, List<Movie>>(HomeProvider.new);
 
@@ -18,12 +18,14 @@ class HomeProvider extends AsyncNotifier<List<Movie>> {
     return _movies;
   }
 
-  List<Movie> get data => _movies;
+  List<Movie> get data {
+    _movies.sort((a, b) => b.created.compareTo(a.created));
+    return _movies;
+  }
 
   Future<List<Movie>> loadMovies() async {
     try {
       final movies = Boxes.movies.values.toList();
-      movies.sort((a, b) => b.created.compareTo(a.created));
       log.i('Loaded ${movies.length} movies');
       return movies;
     } catch (e) {
