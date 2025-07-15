@@ -19,11 +19,11 @@ class Movie {
   @HiveField(2)
   late String description;
   @HiveField(3)
-  late bool isFavorite;
+  bool isFavorite = false;
   @HiveField(4)
-  late final DateTime created = DateTime.now();
+  DateTime created = DateTime.now();
   @HiveField(5)
-  late DateTime updated = DateTime.now();
+  DateTime updated = DateTime.now();
 
   // copywith
   Movie copyWith({
@@ -37,6 +37,7 @@ class Movie {
       ..title = title ?? this.title
       ..description = description ?? this.description
       ..isFavorite = isFavorite ?? this.isFavorite
+      ..created = created ?? this.created
       ..updated = updated ?? this.updated;
   }
 

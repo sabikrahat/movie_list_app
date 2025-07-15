@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart' show AppLocalizations;
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ConsumerWidget, WidgetRef;
-import 'features/home/home.dart';
 
 import 'core/config/constants.dart' show appName;
 import 'core/config/size.dart';
@@ -13,6 +12,7 @@ import 'core/utils/logger/logger_helper.dart';
 import 'core/utils/themes/dark/dark_theme.dart';
 import 'core/utils/themes/light/light_theme.dart';
 import 'core/utils/themes/themes.dart';
+import 'features/home/view/home.dart';
 import 'features/settings/model/locale/locale_model.dart';
 import 'features/settings/model/theme/theme_model.dart';
 import 'features/settings/provider/locale_provider.dart';
