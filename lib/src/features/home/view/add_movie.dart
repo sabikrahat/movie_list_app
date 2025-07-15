@@ -131,7 +131,7 @@ class AddMovieView extends ConsumerWidget {
                   maxLines: 5,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   onTapOutside: (_) => FocusScope.of(context).unfocus(),
-                  validator: (_) => null,
+                  validator: (v) => v.isNullOrEmpty ? 'Please enter a movie description' : null,
                 ),
                 const SizedBox(height: defaultPadding * 5),
                 Column(
@@ -178,7 +178,7 @@ class AddMovieView extends ConsumerWidget {
                       ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: mainEnd,
                       children: [
                         if (movie != null) ...[
                           IconButton(

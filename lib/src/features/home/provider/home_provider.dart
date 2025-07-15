@@ -14,7 +14,7 @@ class HomeProvider extends AsyncNotifier<List<Movie>> {
   Future<List<Movie>> build() async {
     _movies = [];
     _movies = await loadMovies();
-    await Future.delayed(const Duration(minutes: 5));
+    await Future.delayed(const Duration(seconds: 5));
     return _movies;
   }
 
