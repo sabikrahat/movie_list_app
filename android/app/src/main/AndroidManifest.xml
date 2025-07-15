@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="movie_list_app"
+        android:label="Movie List App"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
